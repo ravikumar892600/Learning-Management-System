@@ -28,7 +28,7 @@
 
 
 
-### Tailwind CSS Setup
+<!-- ### Tailwind CSS Setup
 
 1. Install Tailwind CSS
 
@@ -45,6 +45,43 @@ Add the following line to `src/index.css`:
 ```
 
 3. Start the development server
+
+```bash
+npm run dev
+``` -->
+
+
+### Tailwind CSS Setup
+
+1. Install Tailwind CSS
+
+```bash
+npm install tailwindcss @tailwindcss/vite
+```
+
+2. Configure Vite
+
+Update `vite.config.js`:
+
+```js
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
+
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+});
+```
+
+3. Import Tailwind CSS
+
+Add the following line to `src/index.css`:
+
+```css
+@import "tailwindcss";
+```
+
+4. Run the Development Server
 
 ```bash
 npm run dev
