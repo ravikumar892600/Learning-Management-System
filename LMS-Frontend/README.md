@@ -27,3 +27,25 @@
 ```
 
 
+
+### Tailwind CSS Setup
+
+1. Install Tailwind CSS
+
+```bash
+npm install tailwindcss @tailwindcss/cli
+```
+
+2. Import Tailwind in CSS
+
+Add the following line to `src/index.css`:
+
+```css
+@import "tailwindcss";
+```
+
+3. Start the development server
+
+```bash
+npm run dev
+```
