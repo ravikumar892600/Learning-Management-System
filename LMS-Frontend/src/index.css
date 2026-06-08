@@ -2,11 +2,6 @@
 @plugin "daisyui";
 
 body{
-  margin: auto;
-  max-width: 1440px;
-  position: relative;
-}
-
-.drawer-overlay {
-  opacity: 0 !important;
+  margin: 0;
+  padding: 0;
 }
