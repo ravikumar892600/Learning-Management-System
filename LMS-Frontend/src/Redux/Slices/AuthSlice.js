@@ -7,21 +7,21 @@ const initialState = {
   data: {},
 };
 
-export const createAccount = createAsyncThunk(
-  "/auth/signup",
+export const login = createAsyncThunk(
+  "/auth/login",
   async (data) => {
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      toast.success("Account created successfully");
+      toast.success("Login successful");
 
       return {
         success: true,
-        message: "Account created successfully",
         data,
       };
     } catch {
       toast.error("Something went wrong");
+
       return {
         success: false,
       };
@@ -32,7 +32,15 @@ export const createAccount = createAsyncThunk(
 const authSlice = createSlice({
   name: "auth",
   initialState,
+
   reducers: {},
+
+  extraReducers: (builder) => {
+    builder.addCase(login.fulfilled, (state, action) => {
+      state.isLoggedIn = true;
+      state.data = action.payload.data;
+    });
+  },
 });
 
 export default authSlice.reducer;
