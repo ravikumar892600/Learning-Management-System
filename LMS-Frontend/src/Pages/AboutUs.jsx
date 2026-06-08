@@ -5,7 +5,7 @@ import HomeLayout from "../Layouts/HomeLayout";
 
 // Placeholder component to avoid "CaroselSlide is not defined" error.
 // If a dedicated carousel slide component exists, replace this with an import.
-const CaroselSlide = () => null;
+// const CaroselSlide = () => null;
 
 function AboutUs() {
   return (

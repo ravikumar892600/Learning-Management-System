@@ -1,10 +1,33 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { toast } from "react-hot-toast";
 
 const initialState = {
-  isLoggedIn: localStorage.getItem("isLoggedIn") || false,
-  role: localStorage.getItem("role") || " ",
-  data: localStorage.getItem("data") || {},
+  isLoggedIn: false,
+  role: "",
+  data: {},
 };
+
+export const createAccount = createAsyncThunk(
+  "/auth/signup",
+  async (data) => {
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      toast.success("Account created successfully");
+
+      return {
+        success: true,
+        message: "Account created successfully",
+        data,
+      };
+    } catch {
+      toast.error("Something went wrong");
+      return {
+        success: false,
+      };
+    }
+  }
+);
 
 const authSlice = createSlice({
   name: "auth",
@@ -12,5 +35,4 @@ const authSlice = createSlice({
   reducers: {},
 });
 
-// export const {} = authSlice.actions;
 export default authSlice.reducer;
