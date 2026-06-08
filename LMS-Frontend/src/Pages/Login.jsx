@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { toast } from "react-hot-toast";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { login } from "../Redux/Slices/AuthSlice";
 
 import { isEmail } from "../Helpers/regexMatcher";
 import HomeLayout from "../Layouts/HomeLayout";
 
 function Login() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [loginData, setLoginData] = useState({
     email: "",
@@ -35,16 +38,16 @@ function Login() {
       return;
     }
 
-    console.log("Login Data :", loginData);
+    const response = await dispatch(login(loginData));
 
-    toast.success("Login successful");
+    if (response?.payload?.success) {
+      navigate("/");
+    }
 
     setLoginData({
       email: "",
       password: "",
     });
-
-    navigate("/");
   }
 
   return (
@@ -55,9 +58,7 @@ function Login() {
           onSubmit={onLogin}
           className="flex flex-col justify-center gap-3 rounded-lg p-4 text-white w-96 shadow-[0_0_10px_black]"
         >
-          <h1 className="text-center text-2xl font-bold">
-            Login Page
-          </h1>
+          <h1 className="text-center text-2xl font-bold">Login Page</h1>
 
           <div className="flex flex-col gap-1">
             <label htmlFor="email" className="font-semibold">

@@ -1,8 +1,10 @@
+import { toast } from "react-hot-toast";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { FiMenu } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import Footer from "../Components/Footer";
+import { logout } from "../Redux/Slices/AuthSlice";
 
 function HomeLayout({ children }) {
   const dispatch = useDispatch();
@@ -30,9 +32,10 @@ function HomeLayout({ children }) {
   function handleLogout(e) {
     e.preventDefault();
 
-    // const res = await dispatchEvent(logout());
+    dispatch(logout());
 
-    // if(res?payload?.success)
+    toast.success("Logout Successfully");
+
     navigate("/");
   }
 
@@ -92,7 +95,7 @@ function HomeLayout({ children }) {
                     <Link to="/user/profile">Profile</Link>
                   </button>
                   <button className="btn-secondary px-4 py-1 font-semibold rounded-md w-full">
-                    <Link onClick={handleLogout}>Logout</Link>
+                    <button onClick={handleLogout}>Logout</button>
                   </button>
                 </div>
               </li>
