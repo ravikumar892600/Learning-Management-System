@@ -27,30 +27,6 @@
 ```
 
 
-
-<!-- ### Tailwind CSS Setup
-
-1. Install Tailwind CSS
-
-```bash
-npm install tailwindcss @tailwindcss/cli
-```
-
-2. Import Tailwind in CSS
-
-Add the following line to `src/index.css`:
-
-```css
-@import "tailwindcss";
-```
-
-3. Start the development server
-
-```bash
-npm run dev
-``` -->
-
-
 ### Tailwind CSS Setup
 
 1. Install Tailwind CSS
@@ -82,6 +58,28 @@ Add the following line to `src/index.css`:
 ```
 
 4. Run the Development Server
+
+```bash
+npm run dev
+```
+
+
+### DaisyUI Setup
+
+1. Install DaisyUI
+
+```bash
+npm install daisyui
+```
+
+2. Add DaisyUI plugin in `src/index.css`
+
+```css
+@import "tailwindcss";
+@plugin "daisyui";
+```
+
+3. Run the development server
 
 ```bash
 npm run dev
